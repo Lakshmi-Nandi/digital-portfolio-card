@@ -1,0 +1,21 @@
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import setAuthToken from './api/axiosConfig.js';
+import './index.css'
+import App from './App.jsx' 
+
+// check for token and set it on app load
+const token = localStorage.getItem('token');
+if (token) {
+  setAuthToken(token);
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);

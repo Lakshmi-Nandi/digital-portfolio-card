@@ -1,0 +1,82 @@
+.card-view-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: #f4f7f6;
+  padding: 2rem 1rem;
+  font-family: sans-serif;
+}
+
+.card-view {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
+}
+
+.card-view-pfp {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.card-view-name {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.card-view-title {
+  font-size: 1.1rem;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.card-view-bio {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.card-view-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-view-socials a {
+  font-size: 1.5rem;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.card-view-socials a:hover {
+  color: #007bff;
+}
+
+.card-view-contact {
+  margin-top: 1rem;
+}
+
+.card-view-contact p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.loading-text, .error-text {
+  font-size: 1.5rem;
+  color: #555;
+}

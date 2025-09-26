@@ -1,0 +1,53 @@
+.card-preview {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+}
+.preview-header {
+  margin-bottom: 1.5rem;
+}
+.preview-name { font-size: 1.5rem; font-weight: 600; margin: 0; }
+.preview-title { font-size: 1rem; color: #666; margin-bottom: 1rem; }
+.preview-bio {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 1rem 0;
+  line-height: 1.5;
+}
+.preview-button { 
+  padding: 0.6rem 1.2rem; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+.edit-btn { background-color: #007bff; color: white; }
+
+/* Styles for the URL display have been updated */
+.public-url-display {
+  /* The border and padding were moved */
+  margin-bottom: 1.5rem; 
+  font-size: 0.9rem;
+  color: #333;
+}
+.public-url-display span {
+  font-weight: 600;
+}
+.public-url-display a {
+  color: #007bff;
+  text-decoration: none;
+  word-break: break-all;
+}
+.public-url-display a:hover {
+  text-decoration: underline;
+}
+
+/* Styles for the actions section have been updated */
+.preview-actions { 
+  display: flex; 
+  justify-content: center; 
+  /* Added these properties */
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
