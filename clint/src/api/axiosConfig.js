@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-// Set the base URL for all axios requests
-axios.defaults.baseURL = 'http://localhost:3001/api';
+// --- This is the only line that needs to be changed ---
+// It now points to your live backend server on Render
+axios.defaults.baseURL = 'https://digital-portfolio-card-1.onrender.com/api';
+// --- End of change ---
 
 // Function to set the authorization token
 const setAuthToken = (token) => {
