@@ -66,43 +66,43 @@ function CardForm({ initialData, onSave, onCancel }) {
       <h3>{initialData ? 'Edit Your Card' : 'Create Your Card'}</h3>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label>Public URL Slug (e.g., your-name)</label>
-          <input type="text" name="slug" value={formData.slug} onChange={onChange} required disabled={!!initialData} />
+          <label htmlFor="card-slug">Public URL Slug (e.g., your-name)</label>
+          <input id="card-slug" type="text" name="slug" value={formData.slug} onChange={onChange} required disabled={!!initialData} />
         </div>
         <div className="form-grid">
           <div className="form-group">
-            <label>Display Name</label>
-            <input type="text" name="displayName" value={formData.displayName} onChange={onChange} required />
+            <label htmlFor="card-displayName">Display Name</label>
+            <input id="card-displayName" type="text" name="displayName" value={formData.displayName} onChange={onChange} required />
           </div>
           <div className="form-group">
-            <label>Title (e.g., Full-Stack Developer)</label>
-            <input type="text" name="title" value={formData.title} onChange={onChange} required />
+            <label htmlFor="card-title">Title (e.g., Full-Stack Developer)</label>
+            <input id="card-title" type="text" name="title" value={formData.title} onChange={onChange} required />
           </div>
         </div>
         <div className="form-group">
-          <label>Bio</label>
-          <textarea name="bio" value={formData.bio} onChange={onChange}></textarea>
+          <label htmlFor="card-bio">Bio</label>
+          <textarea id="card-bio" name="bio" value={formData.bio} onChange={onChange}></textarea>
         </div>
         <h4>Contact Info</h4>
         <div className="form-grid">
           <div className="form-group">
-            <label>Email</label>
-            <input type="email" name="contact.email" value={formData.contact.email} onChange={onChange} />
+            <label htmlFor="card-contact-email">Email</label>
+            <input id="card-contact-email" type="email" name="contact.email" value={formData.contact.email} onChange={onChange} />
           </div>
           <div className="form-group">
-            <label>Phone</label>
-            <input type="tel" name="contact.phone" value={formData.contact.phone} onChange={onChange} />
+            <label htmlFor="card-contact-phone">Phone</label>
+            <input id="card-contact-phone" type="tel" name="contact.phone" value={formData.contact.phone} onChange={onChange} />
           </div>
         </div>
         <h4>Social Links</h4>
         <div className="form-grid">
           <div className="form-group">
-            <label>LinkedIn URL</label>
-            <input type="url" name="socialLinks.linkedin" value={formData.socialLinks.linkedin} onChange={onChange} />
+            <label htmlFor="card-linkedin">LinkedIn URL</label>
+            <input id="card-linkedin" type="url" name="socialLinks.linkedin" value={formData.socialLinks.linkedin} onChange={onChange} />
           </div>
           <div className="form-group">
-            <label>GitHub URL</label>
-            <input type="url" name="socialLinks.github" value={formData.socialLinks.github} onChange={onChange} />
+            <label htmlFor="card-github">GitHub URL</label>
+            <input id="card-github" type="url" name="socialLinks.github" value={formData.socialLinks.github} onChange={onChange} />
           </div>
         </div>
         <div className="form-actions">

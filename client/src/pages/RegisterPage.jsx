@@ -49,16 +49,16 @@ function RegisterPage() {
         >
           <h2>Register</h2>
           <div className="form-group">
-            <label>Name</label>
-            <input type="text" name="name" value={name} onChange={onChange} required autoComplete="name" />
+            <label htmlFor="register-name">Name</label>
+            <input id="register-name" type="text" name="name" value={name} onChange={onChange} required autoComplete="name" />
           </div>
           <div className="form-group">
-            <label>Email Address</label>
-            <input type="email" name="email" value={email} onChange={onChange} required autoComplete="email" />
+            <label htmlFor="register-email">Email Address</label>
+            <input id="register-email" type="email" name="email" value={email} onChange={onChange} required autoComplete="email" />
           </div>
           <div className="form-group">
-            <label>Password</label>
-            <input type="password" name="password" value={password} onChange={onChange} required minLength="6" autoComplete="new-password" />
+            <label htmlFor="register-password">Password</label>
+            <input id="register-password" type="password" name="password" value={password} onChange={onChange} required minLength="6" autoComplete="new-password" />
           </div>
           <button type="submit" className="auth-button">Create Account</button>
           <p className="auth-switch-link">

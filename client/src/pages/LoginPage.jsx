@@ -51,12 +51,12 @@ function LoginPage() {
         >
           <h2>Login</h2>
           <div className="form-group">
-            <label>Email Address</label>
-            <input type="email" name="email" value={email} onChange={onChange} required autoComplete="email" />
+            <label htmlFor="login-email">Email Address</label>
+            <input id="login-email" type="email" name="email" value={email} onChange={onChange} required autoComplete="email" />
           </div>
           <div className="form-group">
-            <label>Password</label>
-            <input type="password" name="password" value={password} onChange={onChange} required autoComplete="current-password" />
+            <label htmlFor="login-password">Password</label>
+            <input id="login-password" type="password" name="password" value={password} onChange={onChange} required autoComplete="current-password" />
           </div>
           <button type="submit" className="auth-button">Login</button>
           <p className="auth-switch-link">
