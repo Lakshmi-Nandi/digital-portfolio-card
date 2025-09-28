@@ -3,16 +3,22 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-// We only need to import the card routes now
 const cardRoutes = require('./routes/cards');
 
-// Initialize Express app
 const app = express();
 
-// Middleware
-// A simpler CORS setup is better for this project. This allows all origins.
-app.use(cors()); 
-app.use(express.json()); // for parsing application/json
+// --- START OF CORS FIX ---
+// Explicitly define which origin is allowed to access the API
+const corsOptions = {
+  origin: 'https://digital-portfolio-card.vercel.app',
+  optionsSuccessStatus: 200 // For legacy browser support
+};
+
+// Use the cors middleware with our specific options
+app.use(cors(corsOptions));
+// --- END OF CORS FIX ---
+
+app.use(express.json());
 
 // Database Connection
 const MONGO_URI = process.env.MONGO_URI;
@@ -22,13 +28,9 @@ mongoose.connect(MONGO_URI)
   .catch(err => console.error('Connection error', err));
 
 // Use Routes
-// The authRoutes line has been removed
 app.use('/api/cards', cardRoutes); 
 
-// Start the server
-// Using process.env.PORT is essential for deployment on services like Render
 const PORT = process.env.PORT || 3001; 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
