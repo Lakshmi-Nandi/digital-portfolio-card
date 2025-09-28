@@ -1,84 +1,72 @@
-/* Add this animation at the top of the file */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
 .home-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-  /* New gradient background */
+  align-items: flex-start; /* Align to top */
+  min-height: 100vh;
+  padding: 4rem 1rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white; /* Changed text color to white for contrast */
+  color: white;
   font-family: sans-serif;
-  overflow: hidden; /* Prevents scrollbars from animation */
+  box-sizing: border-box;
 }
 
-.home-title {
-  font-size: 3.5rem;
+.content-wrapper, .success-wrapper {
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+}
+
+.home-title, .success-title {
+  font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-  /* Apply the float animation */
-  animation: float 6s ease-in-out infinite;
 }
 
-.home-tagline {
-  font-size: 1.25rem;
-  color: #e0e0e0; /* Lighter color for the tagline */
-  margin-bottom: 2.5rem;
-  max-width: 600px;
-  animation: float 6s ease-in-out infinite;
-  animation-delay: 0.5s; /* Delay to make it offset from the title */
+.home-tagline, .success-message {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
 }
 
-.home-actions {
-  display: flex;
-  gap: 1.5rem; /* Increased gap */
+/* Success State Specific Styles */
+.success-wrapper {
+  background: white;
+  color: #333;
+  padding: 3rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.home-button {
-  padding: 0.8rem 2.2rem;
-  border-radius: 50px; /* Pill-shaped buttons */
-  text-decoration: none;
+.created-card-info {
+  margin: 2rem 0;
+  font-size: 1.1rem;
+}
+
+.created-card-info span {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.created-card-info a {
+  color: #764ba2;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.create-another-btn {
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  border: none;
+  background-color: #764ba2;
+  color: white;
   font-size: 1rem;
   font-weight: 600;
-  border: 2px solid transparent;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.primary {
-  background-color: #ffffff;
-  color: #764ba2;
-}
-
-.primary:hover {
-  background-color: transparent;
-  border-color: #ffffff;
-  color: #ffffff;
-  transform: translateY(-3px); /* Add a slight lift on hover */
-}
-
-.secondary {
-  background-color: transparent;
-  border: 2px solid #ffffff;
-  color: #ffffff;
-}
-
-.secondary:hover {
-  background-color: #ffffff;
-  color: #764ba2;
-  transform: translateY(-3px);
+.create-another-btn:hover {
+  background-color: #613a85;
 }

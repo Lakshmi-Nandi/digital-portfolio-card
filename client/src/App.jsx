@@ -1,34 +1,22 @@
-import './App.css'
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import ProtectedRoute from './components/ProtectedRoute';
+import './App.css';
 
-// import the pages
+// We only need to import the two pages that are left
 import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import DashboardPage from './pages/DashboardPage';
 import CardViewPage from './pages/CardViewPage';
 
 function App() {
-
   return (
     <Routes>
+      {/* The homepage now shows the form to create a card */}
       <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route 
-        path="/dashboard" 
-        element={
-          <ProtectedRoute>
-            <DashboardPage />
-          </ProtectedRoute>
-        } 
-      />
+      
+      {/* This route displays the public card after it's been created */}
       <Route path="/:slug" element={<CardViewPage />} />
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;
+

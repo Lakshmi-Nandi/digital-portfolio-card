@@ -1,30 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './CardForm.css';
 
-function CardForm({ initialData, onSave, onCancel }) {
+function CardForm({ onSave }) {
   const [formData, setFormData] = useState({
     slug: '',
     displayName: '',
     title: '',
     bio: '',
-    socialLinks: { linkedin: '', github: '', twitter: '' },
+    profilePictureUrl: '',
+    socialLinks: { linkedin: '', github: '' },
     contact: { email: '', phone: '' },
   });
-
-  useEffect(() => {
-    if (initialData) {
-      // If editing, pre-fill the form with existing data
-      setFormData({
-        slug: initialData.slug || '',
-        displayName: initialData.displayName || '',
-        title: initialData.title || '',
-        bio: initialData.bio || '',
-        socialLinks: { ...initialData.socialLinks },
-        contact: { ...initialData.contact },
-      });
-    }
-  }, [initialData]);
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -42,32 +29,22 @@ function CardForm({ initialData, onSave, onCancel }) {
   const onSubmit = async e => {
     e.preventDefault();
     try {
-      let res;
-      if (initialData) {
-        // If initialData exists, we are updating (PUT)
-        res = await axios.put('/cards', formData);
-      } else {
-        // Otherwise, we are creating (POST)
-        res = await axios.post('/cards', formData);
-      }
-      onSave(res.data); // Notify parent component
+      // We only need the POST request now
+      const res = await axios.post('/api/cards', formData);
+      onSave(res.data); // Notify parent component (HomePage) of success
     } catch (err) {
-      // --- START OF CHANGED CODE ---
-      // Get the specific error message from the backend, or show a default one.
       const errorMessage = err.response?.data?.msg || 'An unexpected error occurred.';
       console.error('Error from server:', errorMessage);
-      alert(`Error: ${errorMessage}`); // Display the REAL error
-      // --- END OF CHANGED CODE ---s
+      alert(`Error: ${errorMessage}`);
     }
   };
 
   return (
-    <div className="card-form">
-      <h3>{initialData ? 'Edit Your Card' : 'Create Your Card'}</h3>
-      <form onSubmit={onSubmit}>
+    <div className="card-form-container">
+      <form onSubmit={onSubmit} className="card-form">
         <div className="form-group">
           <label htmlFor="card-slug">Public URL Slug (e.g., your-name)</label>
-          <input id="card-slug" type="text" name="slug" value={formData.slug} onChange={onChange} required disabled={!!initialData} />
+          <input id="card-slug" type="text" name="slug" value={formData.slug} onChange={onChange} required />
         </div>
         <div className="form-grid">
           <div className="form-group">
@@ -78,6 +55,10 @@ function CardForm({ initialData, onSave, onCancel }) {
             <label htmlFor="card-title">Title (e.g., Full-Stack Developer)</label>
             <input id="card-title" type="text" name="title" value={formData.title} onChange={onChange} required />
           </div>
+        </div>
+        <div className="form-group">
+            <label htmlFor="card-pfp">Profile Picture URL</label>
+            <input id="card-pfp" type="url" name="profilePictureUrl" value={formData.profilePictureUrl} onChange={onChange} placeholder="https://..." />
         </div>
         <div className="form-group">
           <label htmlFor="card-bio">Bio</label>
@@ -106,8 +87,7 @@ function CardForm({ initialData, onSave, onCancel }) {
           </div>
         </div>
         <div className="form-actions">
-          <button type="submit" className="submit-button">Save Card</button>
-          <button type="button" className="cancel-button" onClick={onCancel}>Cancel</button>
+          <button type="submit" className="submit-button">Generate My Card</button>
         </div>
       </form>
     </div>
@@ -115,3 +95,4 @@ function CardForm({ initialData, onSave, onCancel }) {
 }
 
 export default CardForm;
+

@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 
 const CardSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
+  // The 'user' field has been removed
   slug: {
     type: String,
     required: true,
