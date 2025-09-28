@@ -29,8 +29,8 @@ function CardForm({ onSave }) {
   const onSubmit = async e => {
     e.preventDefault();
     try {
-      // We only need the POST request now
-      const res = await axios.post('/api/cards', formData);
+      // The full URL to your live backend is now specified here
+      const res = await axios.post('https://digital-portfolio-card-1.onrender.com/api/cards', formData);
       onSave(res.data); // Notify parent component (HomePage) of success
     } catch (err) {
       const errorMessage = err.response?.data?.msg || 'An unexpected error occurred.';
