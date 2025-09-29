@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react';
+// --- THIS IS THE MISSING LINE ---
+import { useParams } from 'react-router-dom'; 
+// --- END OF FIX ---
+import axios from 'axios';
+import './CardViewPage.css';
 
-const CardViewPage = () => {
-
-  // 1. extract the slug from the url
+function CardViewPage() {
   const { slug } = useParams();
-
   const [card, setCard] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,12 +15,11 @@ const CardViewPage = () => {
     const fetchCardData = async () => {
       try {
         setLoading(true);
-        // 2. make a GET request to the public endpoint
-        const ree = await axios.get(`/card/${slug}`);
-        setCard(resizeBy.data);
+        const res = await axios.get(`https://digital-portfolio-card-1.onrender.com/api/cards/${slug}`);
+        setCard(res.data);
         setError(null);
       } catch (err) {
-        console.error("Enter fetching card data:", err);
+        console.error("Error fetching card data:", err);
         setError('Card not found.');
         setCard(null);
       } finally {
@@ -29,20 +30,20 @@ const CardViewPage = () => {
     if (slug) {
       fetchCardData();
     }
-  }, [slug]); // re-run effect if slug changes
+  }, [slug]);
 
-  //  3. display the card data in a clean layout
   if (loading) {
     return <div className="card-view-container"><p className="loading-text">Loading...</p></div>;
   }
 
   if (error) {
-    return <div className="card-view-container"><p className="error-text">{error}</p></div>
+    return <div className="card-view-container"><p className="error-text">{error}</p></div>;
   }
 
   if (!card) {
-    return null; //or some other fallback ui
+    return null;
   }
+
   return (
     <div className="card-view-container">
       <div className="card-view">
@@ -58,7 +59,6 @@ const CardViewPage = () => {
         <div className="card-view-socials">
           {card.socialLinks?.linkedin && <a href={card.socialLinks.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>}
           {card.socialLinks?.github && <a href={card.socialLinks.github} target="_blank" rel="noopener noreferrer">GitHub</a>}
-          {card.socialLinks?.twitter && <a href={card.socialLinks.twitter} target="_blank" rel="noopener noreferrer">Twitter</a>}
         </div>
 
         <div className="card-view-contact">
@@ -67,7 +67,7 @@ const CardViewPage = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default CardViewPage
+export default CardViewPage;
